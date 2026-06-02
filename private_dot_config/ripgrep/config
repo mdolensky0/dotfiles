@@ -1,0 +1,12 @@
+# ~/.config/ripgrep/config — pointed to by $RIPGREP_CONFIG_PATH
+# Case-insensitive unless the pattern has uppercase
+--smart-case
+# Search hidden files/dirs (still respects .gitignore and the globs below)
+--hidden
+--glob=!.git/*
+# Keep long lines readable
+--max-columns=200
+--max-columns-preview
+# Highlight line numbers
+--colors=line:fg:yellow
+--colors=line:style:bold

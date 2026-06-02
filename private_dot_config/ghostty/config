@@ -1,0 +1,12 @@
+theme = Sublette
+font-family = "FiraCode Nerd Font Med"
+font-family-bold = "FiraCode Nerd Font Bold"
+font-family-italic = "JetBrainsMono NFM Medium Italic"
+font-family-bold-italic = "JetBrainsMono NFM Bold Italic"
+font-size = 12
+window-padding-x = 10
+window-padding-y = 10
+font-feature = -liga
+font-feature = -calt
+font-feature = -dlig
+

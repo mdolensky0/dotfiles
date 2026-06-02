@@ -1,0 +1,46 @@
+# ~/.config/fd/ignore — global ignore for fd (and therefore fzf).
+# fd already honours each repo's .gitignore; this covers non-git dirs and
+# caches that aren't always gitignored. Bypass ad hoc with: fd -I / --no-ignore
+
+# VCS / OS / editors
+.git/
+.DS_Store
+.idea/
+*.iml
+.vscode/
+.settings/
+.classpath
+.project
+
+# JVM general
+*.class
+
+# Maven
+target/
+
+# Gradle
+.gradle/
+build/
+bin/                 # drop this line if you keep hand-written scripts in bin/
+
+# sbt / Scala / Metals
+project/target/
+.bloop/
+.bsp/
+.metals/
+.scala-build/        # scala-cli
+
+# Swift / Xcode
+.build/              # SwiftPM
+.swiftpm/
+DerivedData/
+Pods/                # CocoaPods
+Carthage/Build/
+xcuserdata/
+*.xcuserstate
+
+# misc
+node_modules/
+__pycache__/
+*.pyc
+.venv/

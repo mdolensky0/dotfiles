@@ -1,0 +1,23 @@
+#!/bin/bash
+# Installs Homebrew (if needed) and all packages from the Brewfile.
+# Runs automatically on `chezmoi apply` whenever the Brewfile changes.
+# Brewfile hash: {{ include "Brewfile" | sha256sum }}
+set -eu
+
+# 1. Install Homebrew if it's not already present
+if ! command -v brew >/dev/null 2>&1; then
+  echo "==> Installing Homebrew..."
+  NONINTERACTIVE=1 /bin/bash -c \
+    "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
+# 2. Make brew available in this shell (Apple Silicon or Intel)
+if [ -x /opt/homebrew/bin/brew ]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [ -x /usr/local/bin/brew ]; then
+  eval "$(/usr/local/bin/brew shellenv)"
+fi
+
+# 3. Install everything in the Brewfile (idempotent)
+echo "==> Installing packages from Brewfile..."
+brew bundle --file="{{ .chezmoi.sourceDir }}/Brewfile"

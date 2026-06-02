@@ -1,0 +1,39 @@
+# This is Git's per-user configuration file.
+[user]
+	name = Max Dolensky
+	email = mdolensky0@gmail.com
+# Please adapt and uncomment the following lines:
+#	name = Max Dolensky
+#	email = mdolensky0@gmail.com
+
+# ---- added by CLI toolchain setup ----
+[core]
+	pager = delta
+[interactive]
+	diffFilter = delta --color-only
+[include]
+	path = ~/.config/delta/catppuccin.gitconfig
+[delta]
+	features = catppuccin-mocha
+	navigate = true
+	line-numbers = true
+	side-by-side = false
+	hyperlinks = true
+[merge]
+	conflictStyle = zdiff3
+[diff]
+	colorMoved = default
+[init]
+	defaultBranch = main
+[push]
+	autoSetupRemote = true
+[pull]
+	rebase = true
+[fetch]
+	prune = true
+[rerere]
+	enabled = true
+[column]
+	ui = auto
+[branch]
+	sort = -committerdate

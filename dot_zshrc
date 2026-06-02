@@ -1,0 +1,13 @@
+# ~/.zshrc — slim loader. Tool/shell config lives in ~/.config/zsh/*.zsh
+export PATH="$HOME/.local/bin:$PATH"
+
+# Source modular config in order (00-options, 10-exports, 20-tools, ...)
+for _zf in "$HOME"/.config/zsh/[0-9]*.zsh; do
+  [ -r "$_zf" ] && source "$_zf"
+done
+unset _zf
+
+# oh-my-posh prompt (kept as-is; init last so it owns the prompt)
+if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
+  eval "$(oh-my-posh init zsh)"
+fi
