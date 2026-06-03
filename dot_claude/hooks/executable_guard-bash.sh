@@ -10,8 +10,10 @@ deny() {
 }
 
 case "$cmd" in
-  *"rm -rf /"|*"rm -fr /"|*"rm -rf ~"*|*'rm -rf $HOME'*) \
-      deny "Blocked by guardrail: recursive force-delete of a root/home path." ;;
+  *"rm -rf /"|*"rm -fr /"|*"rm -rf / "*|*"rm -rf /*"*) \
+      deny "Blocked by guardrail: recursive force-delete of root (/)." ;;
+  *"rm -rf ~"|*"rm -fr ~"|*"rm -rf ~ "*|*"rm -rf ~/"|*"rm -rf ~/*"*|*'rm -rf $HOME'|*'rm -rf $HOME '*|*'rm -rf $HOME/'|*'rm -rf $HOME/*'*) \
+      deny "Blocked by guardrail: recursive force-delete of the entire home directory (specific subpaths are allowed)." ;;
   *":(){ :|:& };:"*) deny "Blocked by guardrail: fork bomb." ;;
   *"mkfs"*|*"> /dev/disk"*|*"> /dev/sd"*) \
       deny "Blocked by guardrail: destructive disk operation." ;;
