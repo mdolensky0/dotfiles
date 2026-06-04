@@ -7,7 +7,6 @@
 .DS_Store
 .idea/
 *.iml
-.vscode/
 .settings/
 .classpath
 .project
@@ -21,20 +20,19 @@ target/
 # Gradle
 .gradle/
 build/
-bin/                 # drop this line if you keep hand-written scripts in bin/
 
 # sbt / Scala / Metals
 project/target/
 .bloop/
 .bsp/
 .metals/
-.scala-build/        # scala-cli
+.scala-build/
 
 # Swift / Xcode
-.build/              # SwiftPM
+.build/
 .swiftpm/
 DerivedData/
-Pods/                # CocoaPods
+Pods/
 Carthage/Build/
 xcuserdata/
 *.xcuserstate
@@ -44,3 +42,7 @@ node_modules/
 __pycache__/
 *.pyc
 .venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/

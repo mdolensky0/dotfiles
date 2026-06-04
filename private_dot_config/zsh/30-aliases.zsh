@@ -23,3 +23,42 @@ alias ff='fastfetch'
 
 # NOTE: `find` is intentionally NOT aliased to fd — their argument syntax is
 # incompatible. Use `fd` directly.
+
+# --- fd: include dotfiles by default (still respects ignore files) ---
+# Without this, bare `fd 10-expor` misses hidden paths like ~/.config/zsh/*.
+# FZF_DEFAULT_COMMAND already passes --hidden, so fzf was unaffected; this fixes
+# interactive `fd`. Reach vanilla fd with `command fd` if ever needed.
+alias fd='fd --hidden'
+
+# --- navigation (AUTO_CD already turns bare `..` into `cd ..`) ---
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+
+# --- tmux ---
+alias ta='tmux attach -t'
+alias tl='tmux ls'
+alias tn='tmux new -A -s'        # -A = attach if the session already exists, else create
+alias tkill='tmux kill-session -t'
+alias td='tmux detach'
+
+# --- gh (pull requests) ---
+alias ghpr='gh pr checkout'
+alias ghpv='gh pr view'
+alias ghvw='gh pr view --web'
+
+# --- chezmoi (matches the edit-real-file -> `re-add` workflow) ---
+alias cz='chezmoi'
+alias cze='chezmoi edit'
+alias cza='chezmoi add'
+alias czra='chezmoi re-add'
+alias czp='chezmoi apply -v'
+alias czs='chezmoi status'
+alias czd='chezmoi diff'
+alias czcd='chezmoi cd'
+
+# --- maven ---
+alias mci='mvn clean install'
+alias mcp='mvn clean package'
+alias mvt='mvn test'
+alias mvo='mvn -o'               # offline (use a cached dependency set)
