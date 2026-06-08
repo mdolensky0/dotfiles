@@ -64,5 +64,5 @@ alias czcd='chezmoi cd'
 # --- maven ---
 alias mci='mvn clean install'
 alias mcp='mvn clean package'
-alias mvt='mvn test'
-alias mvo='mvn -o'               # offline (use a cached dependency set)
+alias mvt='mvn test'             # unit tests (surefire)
+alias mvv='mvn verify'           # unit + integration tests (failsafe) + verify
