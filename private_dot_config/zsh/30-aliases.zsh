@@ -46,6 +46,10 @@ alias td='tmux detach'
 alias ghpr='gh pr checkout'
 alias ghpv='gh pr view'
 alias ghvw='gh pr view --web'
+# Open PRs from your review circle (functions live in 60-functions.zsh).
+# TODO: replace coworker1/coworker2 with real GitHub usernames.
+alias tprs='prs mdolensky0 coworker1 coworker2'    # list
+alias tprsf='prsf mdolensky0 coworker1 coworker2'  # fzf picker
 
 # --- chezmoi (matches the edit-real-file -> `re-add` workflow) ---
 alias cz='chezmoi'

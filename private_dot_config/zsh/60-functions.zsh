@@ -61,6 +61,46 @@ gcb() {  # fuzzy-switch branch (most recently committed first)
   [[ -n $b ]] && git switch "$b"
 }
 
+# --- gh / pull requests ---
+# Goal: open PRs authored by ANY of a set of users. GitHub's issue/PR search has
+# no OR operator and ANDs repeated `author:` qualifiers — and a PR has exactly
+# one author — so `author:a author:b` matches nothing. Instead query per user
+# and union the results; since each PR has one author the sets never overlap, so
+# no dedup is needed. Pass usernames as args; see `tprs` / `tprsf` (30-aliases).
+_prs_json() {  # internal: combined JSON of open PRs for the given authors, newest first
+  emulate -L zsh
+  local u
+  for u in "$@"; do
+    gh search prs --state=open --author="$u" --sort=updated --limit 50 \
+       --json number,title,repository,url,author,updatedAt
+  done | jq -s 'add // [] | sort_by(.updatedAt) | reverse'
+}
+
+prs() {  # prs <user> [user...] : list open PRs authored by any of these users
+  emulate -L zsh
+  (( $# )) || { print -u2 "usage: prs <user> [user...]"; return 1 }
+  _prs_json "$@" \
+    | jq -r '.[] | "\(.repository.nameWithOwner)#\(.number)\t\(.title)\t@\(.author.login)"' \
+    | column -t -s $'\t'
+}
+
+prsf() {  # prsf <user> [user...] : fzf-pick an open PR — Enter opens it in the browser
+  emulate -L zsh
+  (( $# )) || { print -u2 "usage: prsf <user> [user...]"; return 1 }
+  # Cross-repo results, so the actions are: preview inline, open in browser (Enter),
+  # read in a pager (Ctrl-V), or copy the URL (Ctrl-Y).
+  _prs_json "$@" \
+    | jq -r '.[] | [.url, .repository.nameWithOwner, (.number|tostring),
+             "\(.repository.nameWithOwner)#\(.number)  \(.title)  (@\(.author.login))"] | @tsv' \
+    | fzf --ansi --delimiter='\t' --with-nth=4.. \
+          --header 'enter: open in browser   ctrl-v: view here   ctrl-y: copy url' \
+          --preview 'gh pr view {3} --repo {2}' \
+          --preview-window 'right,60%,wrap' \
+          --bind 'ctrl-v:execute(gh pr view {3} --repo {2} --comments | less -R)' \
+          --bind 'ctrl-y:execute-silent(printf %s {1} | pbcopy)' \
+          --bind 'enter:become(gh pr view {3} --repo {2} --web)'
+}
+
 # --- system / utility ---
 fkill() {  # fuzzy-pick process(es) and kill them (default TERM; `fkill KILL` to override)
   local pids
