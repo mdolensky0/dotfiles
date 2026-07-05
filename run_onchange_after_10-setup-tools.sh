@@ -48,15 +48,7 @@ if command -v nvim >/dev/null 2>&1; then
   nvim --headless "+qa" >/dev/null 2>&1 </dev/null || true
 fi
 
-# 7. fb-idb (iOS simulator control for ios-simulator-mcp) — needs Python <= 3.11
-if command -v pipx >/dev/null 2>&1 && ! command -v idb >/dev/null 2>&1; then
-  if command -v python3.11 >/dev/null 2>&1; then
-    echo "==> Installing fb-idb (idb CLI) on Python 3.11..."
-    pipx install --python "$(command -v python3.11)" fb-idb >/dev/null 2>&1 || true
-  fi
-fi
-
-# 8. Claude Code: context7 MCP (live library docs), user scope
+# 7. Claude Code: context7 MCP (live library docs), user scope
 if command -v claude >/dev/null 2>&1; then
   claude mcp list 2>/dev/null | grep -q '^context7' || \
     claude mcp add --scope user context7 -- npx -y @upstash/context7-mcp >/dev/null 2>&1 || true

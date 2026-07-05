@@ -7,7 +7,6 @@ for _zf in "$HOME"/.config/zsh/[0-9]*.zsh; do
 done
 unset _zf
 
-# oh-my-posh prompt (kept as-is; init last so it owns the prompt)
-if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
-  eval "$(oh-my-posh init zsh)"
-fi
+# The tail of startup is order-critical and lives in the numbered files above:
+#   70-prompt.zsh   → oh-my-posh
+#   90-shell-ux.zsh → autosuggestions → zoxide → syntax-highlighting (do not reorder)

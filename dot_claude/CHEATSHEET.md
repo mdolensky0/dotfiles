@@ -20,11 +20,11 @@ Set with `/effort`: `low` < `medium` < `high` (default on Opus 4.8 / Sonnet 4.6)
 
 ## Commands
 - **backend:** `/verify` `/grpc-ls` `/new-module` `/adr`
-- **Dido:** `/build` `/test` `/run` (builds, launches, and drives the simulator) `/sync-protos` `/new-feature`
+- **Dido:** `/build` `/test` `/sync-protos` `/new-feature`
 - **global:** `/commit` `/create-pr` `/security-review`
 
 ## Installed skills/plugins
-superpowers (TDD · brainstorm · systematic-debugging · subagent review · worktrees), grill-me, handoff, web-artifacts-builder, skill-creator, mcp-builder, document-skills (pdf/docx/pptx/xlsx), security-guidance, **java-backend**, **swift-ios**. MCP: context7 (live docs), ios-simulator (Dido only).
+superpowers (TDD · brainstorm · systematic-debugging · subagent review · worktrees), grill-me, handoff, web-artifacts-builder, skill-creator, mcp-builder, document-skills (pdf/docx/pptx/xlsx), security-guidance, **java-backend**, **swift-ios**. MCP: context7 (live docs).
 
 ## Safety
 A Bash guardrail hook blocks catastrophic commands (`rm -rf /`, force-push to main, fork bombs). `.env`/keys are deny-listed from reads. Push/commit/destructive actions still prompt.

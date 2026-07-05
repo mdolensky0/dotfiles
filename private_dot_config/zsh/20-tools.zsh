@@ -1,9 +1,5 @@
 # ~/.config/zsh/20-tools.zsh — tool initialisation & integrations
-
-# zoxide — replaces `cd` (normal cd + frecency jumps). `cdi` = interactive picker.
-if command -v zoxide >/dev/null; then
-  eval "$(zoxide init zsh --cmd cd)"
-fi
+# (zoxide + the interactive plugins live in 90-shell-ux.zsh — they must load last.)
 
 # fzf — key bindings (Ctrl-T files, Ctrl-R history, Alt-C cd) + fuzzy completion
 if command -v fzf >/dev/null; then

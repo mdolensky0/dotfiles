@@ -1,4 +1,3 @@
-tap "facebook/fb"
 tap "jandedobbeleer/oh-my-posh"
 # Code searching, linting, rewriting
 brew "ast-grep"
@@ -44,16 +43,12 @@ brew "tree-sitter"
 brew "neovim"
 # Open-source, cross-platform JavaScript runtime environment
 brew "node"
-# Execute binaries from Python packages in isolated environments
-brew "pipx"
 # Protocol buffers (Google's data interchange format)
 brew "protobuf"
 # Plugin and runtime library for using protobuf with Swift
 brew "swift-protobuf"
 # Protoc plugin for generating gRPC Swift stubs
 brew "protoc-gen-grpc-swift"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.11"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Terminal multiplexer
@@ -62,10 +57,10 @@ brew "tmux"
 brew "tree-sitter-cli"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
-# A Powerful Command Line for automating iOS Simulators
-brew "facebook/fb/idb-companion"
 # Prompt theme engine for any shell
 brew "jandedobbeleer/oh-my-posh/oh-my-posh"
+brew "zsh-autosuggestions"
+brew "zsh-syntax-highlighting"
 cask "font-fira-code-nerd-font"
 cask "font-jetbrains-mono-nerd-font"
 # Set of tools to manage resources and applications hosted on Google Cloud
