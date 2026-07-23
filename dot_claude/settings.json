@@ -52,10 +52,25 @@
   },
   "hooks": {
     "PreToolUse": [
-      { "matcher": "Bash", "hooks": [ { "type": "command", "command": "/Users/maxdolensky/.claude/hooks/guard-bash.sh" } ] }
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/maxdolensky/.claude/hooks/guard-bash.sh"
+          }
+        ]
+      }
     ],
     "Notification": [
-      { "hooks": [ { "type": "command", "command": "/Users/maxdolensky/.claude/hooks/notify-attention.sh" } ] }
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/maxdolensky/.claude/hooks/notify-attention.sh"
+          }
+        ]
+      }
     ]
   },
   "statusLine": {
@@ -84,5 +99,6 @@
       }
     }
   },
+  "skipWorkflowUsageWarning": true,
   "skipAutoPermissionPrompt": true
 }
